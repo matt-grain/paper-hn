@@ -4,10 +4,13 @@ html(lang="en")
 		title Paper HN
 		meta(charset='utf-8')
 		meta(name="viewport" content="initial-scale=1")
+		link(rel="preconnect" href="https://fonts.googleapis.com")
+		link(rel="stylesheet" href="https://fonts.gstatic.com" crossorigin)
+		link(href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap" rel="stylesheet")
 		style.
-			body {font-family: serif}
-			h1 {font-size: 300%; text-align: center; margin-bottom: 0.5em}
-			.mastspan {border-top: 1px solid black; border-bottom: 1px solid black; padding: 0.25em 0.5em; display: flex; justify-content: space-between}
+			body {font-family: serif;}
+			h1 {font-family: "DM Serif Text", serif; font-size: 300%; text-align: center; margin-bottom: 0.5em}
+			.mastspan {font-family: "DM Serif Text", serif; border-top: 1px solid black; border-bottom: 1px solid black; padding: 0.25em 0.5em; display: flex; justify-content: space-between}
 			progress {display: block; margin: 2em auto; width: 100%; max-width: 25em}
 			a:link, a:visited {text-decoration: none; color: inherit}
 			a:link:hover {text-decoration: underline}
@@ -21,7 +24,7 @@ html(lang="en")
 			main section:nth-child(n+10) h2 {font-size: 120%}
 			main section img {max-width: 100%; filter: grayscale(100%); display: block; margin: 0 auto 0.5em}
 			main section:hover img {filter: none}
-			h2 {margin: 0 0 0.5em}
+			h2 {font-family: "DM Serif Text", serif; margin: 0 0 0.5em}
 			main section p {margin-top: 0.25em;}
 			p {margin: 0; -webkit-hyphens: auto; -moz-hyphens: auto; -ms-hyphens: auto; -o-hyphens: auto; word-break:break-word; hyphens: auto; text-align: justify}
 			.keyword {font-family: sans-serif}
@@ -40,10 +43,13 @@ html(lang="en")
 		meta(name='twitter:image' content='https://www.wolfgangfaust.com/project/paper-hn/screenshot.png')
 	body
 		header
-			h1: a(href='https://news.ycombinator.com') Hacker News
+			h1: a(href='https://news.ycombinator.com') Latest posts from YC Hacker News
 			.mastspan
 				span No. #{Math.max(...stories.map(s => s.id))}
-				span #{date} UTC
+				span: a(href="game.html") Play a game
+				span: a(href="top.html") Top Stories
+				span: a(href="index.html") New stories
+				span #{date}
 		.noscript This looks much nicer if you enable JavaScript.
 		main
 			- let imgcnt = 0
@@ -114,17 +120,4 @@ html(lang="en")
 				})
 				progress.remove()
 			})
-		// Matomo
-		script(type="text/javascript").
-			var _paq = window._paq || [];
-			/* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-			_paq.push(['trackPageView']);
-			_paq.push(['enableLinkTracking']);
-			(function() {
-				var u="//analytics.linestarve.com/";
-				_paq.push(['setTrackerUrl', u+'matomo.php']);
-				_paq.push(['setSiteId', '10']);
-				var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-				g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-			})();
-		noscript: p: img(src="//analytics.linestarve.com/matomo.php?idsite=10&amp;rec=1" style="border:0;" alt="")
+
